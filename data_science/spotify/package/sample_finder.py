@@ -7,7 +7,9 @@ from whosampled_scrape import *
 from config import *
 
 def call_api(username, scope='playlist-modify-public'):
-    token = util.prompt_for_user_token(username, scope, client_id=client, client_secret=secret, redirect_uri='http://localhost:8889')
+    client='0db9481579f84081a98e19d819ecadc3'
+    secret='d8534eebbefe4b31baf794b167688a39'
+    token = util.prompt_for_user_token(username, scope, client_id=client, client_secret=secret, redirect_uri='http://google.com/')
     return token
 
 def make_description(spot_dict):
@@ -17,8 +19,9 @@ def make_description(spot_dict):
     return summary
 
 def read_playlist(uri, sp, link=None):
-    username = uri.split(':')[2]
-    playlist_id = uri.split(':')[4]
+    # username = uri.split(':')[2]
+    username = 1285786764
+    playlist_id = uri.split(':')[2]
     og_tracks = []
     results = sp.user_playlist(username, playlist_id)
     for i in results['tracks']['items']:
@@ -75,9 +78,14 @@ def get_new_sample_playlist(uri, new_playlist_name, user):
 def run_program():
     uri = input('Please enter the Spotify URI of your playlist. \nThis can be found by clicking "Share" on your playlist and then selecting "Copy Spotify URI":\n')
     name = input('Please enter the name of your new sample playlist\n')
-    username = uri.split(':')[2]
-    playlist_id = uri.split(':')[4]
+    # username = uri.split(':')[2]
+    username = 1285786764
+    # playlist_id = uri.split(':')[2]
+    uri = "spotify:playlist:37i9dQZF1E9TtJ0IOr3OFc"
+
     get_new_sample_playlist(uri, name, username)
     pass
 
 run_program()
+
+#spotify:playlist:44iZ7RRjdum3DiCQiUMcN4
