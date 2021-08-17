@@ -1,10 +1,10 @@
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-import json
-from spotipy.util import prompt_for_user_token
+# from spotipy.oauth2 import SpotifyClientCredentials
+# import json
+# from spotipy.util import prompt_for_user_token
 from spotipy import util
 from whosampled_scrape import *
-from config import *
+# from config import *
 
 def call_api(username, scope='playlist-modify-public'):
     client='0db9481579f84081a98e19d819ecadc3'
@@ -41,7 +41,8 @@ def get_spotify_ids(whosampled_playlist, sp):
         sub_list = []
         artist = i['artist'].lower()
 #         print('NEW SAMPLE: {} by {}'.format(i['title'], artist))
-        result = sp.search(i['title'], limit=50)['tracks']['items']
+        result = sp.search(q='artist:' + artist + ' track:' + i['title'], type='track', limit=50)['tracks']['items']
+        # result = sp.search(i['title'], limit=50)['tracks']['items']
         for j in result:
             if j['artists'][0]['name'].lower() == artist:
                 sub_list.append(j['id'])
