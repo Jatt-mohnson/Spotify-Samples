@@ -84,8 +84,8 @@ def run_program():
     username = 1285786764
     # playlist_id = uri.split(':')[2]
     # uri = "spotify:playlist:37i9dQZF1E9TtJ0IOr3OFc"
-    uri = sys.argv[0]
-    name = sys.argv[1]
+    uri = sys.argv[1]
+    name = sys.argv[2]
     get_new_sample_playlist(uri, name, username)
     pass
 
