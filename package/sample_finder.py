@@ -5,6 +5,7 @@ import spotipy
 from spotipy import util
 from whosampled_scrape import *
 # from config import *
+import sys
 
 def call_api(username, scope='playlist-modify-public'):
     client='0db9481579f84081a98e19d819ecadc3'
@@ -77,13 +78,14 @@ def get_new_sample_playlist(uri, new_playlist_name, user):
     pass
 
 def run_program():
-    uri = input('Please enter the Spotify URI of your playlist. \nThis can be found by clicking "Share" on your playlist and then selecting "Copy Spotify URI":\n')
-    name = input('Please enter the name of your new sample playlist\n')
+    # uri = input('Please enter the Spotify URI of your playlist. \nThis can be found by clicking "Share" on your playlist and then selecting "Copy Spotify URI":\n')
+    # name = input('Please enter the name of your new sample playlist\n')
     # username = uri.split(':')[2]
     username = 1285786764
     # playlist_id = uri.split(':')[2]
-    uri = "spotify:playlist:37i9dQZF1E9TtJ0IOr3OFc"
-
+    # uri = "spotify:playlist:37i9dQZF1E9TtJ0IOr3OFc"
+    uri = sys.argv[0]
+    name = sys.argv[1]
     get_new_sample_playlist(uri, name, username)
     pass
 
