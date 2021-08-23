@@ -59,6 +59,9 @@ def get_spotify_ids(whosampled_playlist, sp):
 
 def create_and_populate(username, new_playlist_name, spotify_dict, sp):
     playlist = sp.user_playlist_create(username, new_playlist_name)
+    playlist_id = playlist["id"]
+    print(playlist)
+    print(playlist_id)
     newest_id = sp.user_playlists(username)['items'][0]['id'] #get ID of playlist just created
     sp.user_playlist_add_tracks(username, newest_id, spotify_dict['ids'], None) #populate playlist with all samples
     pass
@@ -92,3 +95,5 @@ def run_program():
 run_program()
 
 #spotify:playlist:44iZ7RRjdum3DiCQiUMcN4
+#https://open.spotify.com/playlist/6uLRFki6ras4ns4VLs3dTF?si=357f592376be483e
+#spotify:playlist:6uLRFki6ras4ns4VLs3dTF

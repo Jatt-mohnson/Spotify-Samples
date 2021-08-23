@@ -34,13 +34,13 @@ def retrieve_samples_v2(song_name, link):
         there_in = [i.split('\n') for i in list(filter(None, listed[0].split('\t')))][:-1]
         there_out = [i.split('\n') for i in list(filter(None, listed[1].split('\t')))][:-1]
         for j in there_out:
-            print('there_out', song_name, j, len(j))
+            # print('there_out', song_name, j, len(j))
             sampled_by.append({'query':song_name, 'type':j[-7], 'genre':j[-6], 'title':j[-3], 'artist':j[-2].replace('by ', '').split(' (')[0], 'year': j[-2].replace('by ', '').split(' (')[1].replace(')', '')})
     else:
         there_in = [i.split('\n') for i in list(filter(None, listed[0].split('\t')))][:-1]
 
     for i in there_in:
-        print('there_in', song_name, i, len(i))
+        # print('there_in', song_name, i, len(i))
         try:
             samples.append({'query':song_name, 'type':i[-7], 'genre':i[-6], 'title':i[-3], 'artist':i[-2].replace('by ', '').split(' (')[0], 'year': i[-2].replace('by ', '').split(' (')[1].replace(')', '')})
         except IndexError as e:
