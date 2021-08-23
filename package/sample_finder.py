@@ -60,11 +60,11 @@ def get_spotify_ids(whosampled_playlist, sp):
 def create_and_populate(username, new_playlist_name, spotify_dict, sp):
     playlist = sp.user_playlist_create(username, new_playlist_name)
     playlist_id = playlist["id"]
-    print(playlist)
-    print(playlist_id)
-    newest_id = sp.user_playlists(username)['items'][0]['id'] #get ID of playlist just created
-    sp.user_playlist_add_tracks(username, newest_id, spotify_dict['ids'], None) #populate playlist with all samples
-    pass
+    # print(playlist)
+    # print(playlist_id)
+    # newest_id = sp.user_playlists(username)['items'][0]['id'] #get ID of playlist just created
+    sp.user_playlist_add_tracks(username, playlist_id, spotify_dict['ids'], None) #populate playlist with all samples
+    return playlist_id
 
 def get_new_sample_playlist(uri, new_playlist_name, user):
     token = call_api(user, 'playlist-modify-public')
@@ -78,7 +78,7 @@ def get_new_sample_playlist(uri, new_playlist_name, user):
     new_playlist = create_and_populate(user, new_playlist_name, spotify_dict, sp2)
     print('\nNew playlist "{}" created!'.format(new_playlist_name))
 #     sp2.user_playlist_change_details(username, playlist_id, name=new_playlist_name, public=None, collaborative=None,description=description)
-    pass
+    return new_playlist
 
 def run_program():
     # uri = input('Please enter the Spotify URI of your playlist. \nThis can be found by clicking "Share" on your playlist and then selecting "Copy Spotify URI":\n')
@@ -89,8 +89,8 @@ def run_program():
     # uri = "spotify:playlist:37i9dQZF1E9TtJ0IOr3OFc"
     uri = sys.argv[1]
     name = sys.argv[2]
-    get_new_sample_playlist(uri, name, username)
-    pass
+    new_playlist = get_new_sample_playlist(uri, name, username)
+    return new_playlist
 
 run_program()
 
