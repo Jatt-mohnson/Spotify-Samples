@@ -72,7 +72,7 @@ def get_whosampled_playlist(loaded_playlist):
     lst = [i for j in new_playlist for i in j]
     sb_data = [i for j in sb_data for i in j]
     sample_data = pd.DataFrame(lst)
-    sample_data.to_csv('samples.csv')
+    sample_data.to_csv('playlist_data/samples.csv')
     sb_data = pd.DataFrame(sb_data)
     sb_data.to_csv('sampled_by.csv')
     return lst

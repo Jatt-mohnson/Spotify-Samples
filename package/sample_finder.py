@@ -61,7 +61,7 @@ def get_spotify_ids(whosampled_playlist, sp):
 def create_and_populate(username, new_playlist_name, spotify_dict, sp):
     playlist = sp.user_playlist_create(username, new_playlist_name)
     playlist_id = playlist["id"]
-    os.rename('samples.csv', playlist_id+'.csv')
+    os.rename('playlist_data/samples.csv', 'playlist_data/' +playlist_id+'.csv')
     # playlist_file  = pd.read_csv('samples.csv')
     # print(playlist)
     # print(playlist_id)
