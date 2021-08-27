@@ -6,6 +6,7 @@ from spotipy import util
 from whosampled_scrape import *
 # from config import *
 import os
+import sys
 
 
 def parse_link(uri):
@@ -116,10 +117,10 @@ def get_new_sample_playlist(uri, new_playlist_name, user):
 
 def run_program():
     username = 1285786764
-    # uri = sys.argv[1]
-    # name = sys.argv[2]
-    uri = "spotify:playlist:6uLRFki6ras4ns4VLs3dTF"
-    name = input('Please enter the name of your new sample playlist\n')
+    uri = sys.argv[1]
+    name = sys.argv[2]
+    # uri = "spotify:playlist:6uLRFki6ras4ns4VLs3dTF"
+    # name = input('Please enter the name of your new sample playlist\n')
 
     new_playlist = get_new_sample_playlist(uri, name, username)
     return new_playlist
